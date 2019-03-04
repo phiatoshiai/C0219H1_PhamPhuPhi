@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Do you love me?</title>
+</head>
+
+<body>
+    <br><br><br>
+    <div style="width:500px;margin:auto;font-size: 30px;">
+        <div><marquee direction="up">DO YOU LOVE ME ???</marquee></div>
+        <input type="button" value="  YES  " style="position: absolute;top:120px;left:730px;" onclick="alert('Yes. You are right')">
+        <input type="button" value="  NO  " style="position: absolute;top:120px;left:950px;" onmouseover="move()" id="move">
+    </div>
+    <script>
+        function move(){
+            document.getElementById("move").style.top=Math.random()*window.innerHeight +'px'; //Nhảy ở nhiều Height khác nhau
+            document.getElementById("move").style.left=Math.random()*window.innerWidth+'px';  //Nhảy ở nhiều Weight khác nhau
+        }
+    </script>
+</body>
+
+</html>

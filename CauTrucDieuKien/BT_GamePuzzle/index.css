@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+#wrap{
+    width:495px;
+    height: 750px;
+    margin:auto;
+    border: 1px solid orange;
+}
+.part{
+    width: auto;
+    height: 20%;
+    border: 1px solid white;
+}
+#part1{
+    background: url("images/2.jpg") no-repeat 0% 0%;
+}
+#part2{
+    background: url("images/1.jpg") no-repeat 0% 25%;
+}
+#part3{
+    background: url("images/3.jpg") no-repeat 0% 50%;
+}
+#part4{
+    background: url("images/1.jpg") no-repeat 0% 75%;
+}
+#part5{
+    background: url("images/4.jpg") no-repeat 0% 100%;
+}
+#done{
+    background-color:rgba(160, 204, 125, 0.38);
+    border-radius: 999px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 60px;
+    left:675px;
+    color: rgb(204, 19, 19);
+    font-size: 30px;
+    display: none;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>BMI</title>
+</head>
+
+<body>
+
+    <script>
+        var cannang=parseFloat(prompt("Nhập khối lượng(kg):"));
+        var chieucao=parseFloat(prompt("Nhập chiều cao chieucao(m):"));
+        bmi=cannang/Math.pow(chieucao,2);
+        console.log(bmi);
+        if (bmi < 18)
+        {
+            document.write("Underweight");
+        }
+        else if (bmi < 25.0)
+        {
+            dcument.write("Normal");
+        }
+        else if (bmi < 30.0)
+        {
+            document.write("Overweight");
+        }
+        else
+        {
+            document.write("Obese");
+        }
+    </script>
+
+</body>
+</html>
