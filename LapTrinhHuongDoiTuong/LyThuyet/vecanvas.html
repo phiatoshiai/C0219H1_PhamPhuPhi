@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Canvas</title>
+    </head>
+    <body>
+        <script>
+            <canvas id="myCanvas" width="200" height="100"></canvas>
+            //width và height là các thuộc tính để quy định kích thước của canvas
+            //id là thuộc tính để chúng ca có thể truy xuất được đối tượng canvas này từ mã Javascript 
+            //(thông qua phương thức document.getElementById()).
+
+            //Vẽ một đường thẳng//
+            //------------------//
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d"); //vẽ kiểu 2D
+            ctx.moveTo(0,0); //vị trí bắt đầu vẽ (Tọa độ weight,height)
+            ctx.lineTo(200,100); //vị trí điểm cuối (Tọa độ W, H)
+            ctx.stroke(); //Hàm bắt đầu vẽ
+
+
+            //Vẽ đường tròn//
+            //-------------//
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(95,50,40,0,2*Math.PI);
+            ctx.stroke();
+
+            //Vẽ chữ//
+            //------//
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.font = "30px Arial";
+            ctx.fillText("Hello World",10,50); //kiểu chữ đầy
+            //hoặc
+
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.font = "30px Arial";
+            ctx.strokeText("Hello World",10,50); //kiểu chữ trống bụng
+
+            //Hiệu ứng Gradient mờ dần
+            //----------------------------------------------------------------------------------
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+// Create gradient
+var grd = ctx.createLinearGradient(0,0,200,0);
+grd.addColorStop(0,"red");
+grd.addColorStop(1,"white");
+
+// Fill with gradient
+ctx.fillStyle = grd;
+ctx.fillRect(10,10,150,80);
+
+
+            //Hiệu ứng gradient tròn tâm
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+
+// Create gradient
+var grd = ctx.createRadialGradient(75,50,5,90,60,100);
+grd.addColorStop(0,"red");
+grd.addColorStop(1,"white");
+
+
+
+
+        </script>
+        
+    </body>
+</html>

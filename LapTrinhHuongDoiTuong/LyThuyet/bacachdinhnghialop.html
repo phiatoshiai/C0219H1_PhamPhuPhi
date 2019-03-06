@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ba cách định nghĩa lớp</title>
+    </head>
+    <body>
+        <script>
+            //Khai báo lớp Apple với các thuộc tính type, color, 
+            //phương thức getAppleInfo()
+            function Apple (type) {
+    this.type = type;
+    this.color = "red";
+    this.getInfo = function() {
+        return this.color + ' ' + this.type + ' apple';
+    };
+        //Tốn nhiều tài nguyên bộ nhớ
+        //Cách khác
+        function Apple (type) {
+            this.type = type;
+            this.color = "red";
+        }
+        Apple.prototype.getInfo = function() {
+        return this.color + ' ' + this.type + ' apple';
+        };
+
+        //Cách tốt nhất
+        let apple = {
+            type: "macintosh",
+            color: "red",
+            getInfo: function () {
+            return this.color + ' ' + this.type + ' apple';
+    }
+        }   
+
+
+        //Singleton
+        let apple = new function() {
+        this.type = "macintosh";
+        this.color = "red";
+        this.getInfo = function () {
+        return this.color + ' ' + this.type + ' apple';
+        };
+        }//
+
+
+}
+        </script>
+    </body>
+</html>

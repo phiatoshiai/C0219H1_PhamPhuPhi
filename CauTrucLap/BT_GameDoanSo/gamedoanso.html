@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Game đoán số</title>
+</head>
+
+<body>
+    <div style="width:600px;text-align:center;margin: auto;" id="result">
+    <input type="button" value="Chơi Game" style="width:100px;height: 100px;" onclick="play()">
+    </div>
+    <script>
+        function play(){
+            var num=parseInt(prompt("Nhập vào số cực đại trong dãy bạn muốn đoán: "));
+            var ranNum=Math.floor(Math.random()*num);
+            for(var i=0;i<3;i++){
+                var guess=parseInt(prompt("Nhập số bạn muốn đoán: "));
+                var luot=3;
+                if(guess==ranNum)
+                {
+                    alert("Chiến thắng");
+                    break;
+                }else if(guess>ranNum)
+                {
+                    alert("Bạn còn " + luot + "lượt để đoán, nhập lại: ");
+                    luot++;
+                }else{
+                    alert("Bạn còn " + luot + "lượt để đoán, nhập lại: ");
+                    luot++;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

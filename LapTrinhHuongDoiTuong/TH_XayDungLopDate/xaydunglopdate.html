@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Xây dựng Date - Bài thực hành mẫu</title>
+    </head>
+    <body>
+        <script>
+         //BƯỚC 1:   //Xây dựng lớp Mydate với truyền vào 3 thuộc tính day, month,year
+        let MyDate = function(day, month, year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+            };
+            
+         //BƯỚC 2:    //Xây dựng phương thức trả về date, month, year
+            this.getDay = function() { //trả về ngày
+                return this.day;
+            }
+            this.getMonth = function() { //trả về tháng
+                return this.month;
+            }
+            this.getYear = function() { //trả về năm
+                return this.year;
+            }
+
+           //BƯỚC 3:  //Xây dựng phương thức thiết đặt lại giá trị của các thuộc tính
+            this.setDay = function(day) { //thiết đặt ngày
+                this.day  = day;
+            }
+            this.setMonth = function(month) { //thiết đặt tháng
+                this.month  = month;
+            }
+            this.setYear = function(year) { //thiết đặt năm
+                this.year  = year;
+            }
+        //BƯỚC 4:   //Sử dụng lớp vừa tạo. Tạo đối tượng date với ngày:2, tháng:2, năm: 2007:
+        let date = new MyDate(2, 2, 2007);
+
+        //BƯỚC 5: Truy Cập phương thức của lớp Date
+        let day = date.getDay(); // 2
+        let month = date.getMonth(); // 2
+        let year = date.getYear(); // 2007
+
+        //BƯỚC 6: Hiển thị ngày, tháng, năm:
+        alert(day + "/" + month + "/" + year);
+
+        //BƯỚC 7 Phương thức thay đổi ngày tháng năm
+        date.setDay(10);
+        date.setMonth(10);
+        date.setYear(2019);
+
+
+
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lý thuyết hướng đối tượng</title>
+    </head>
+    <body>
+        <script>
+            //let persion = {}   Khởi tạo đối tượng rỗng Null
+            let person = { //Đối tượng Persion với các thuộc tính Tên, Tuổi, Giới tính, sở tích.
+                name: ['Bob', 'Smith'],
+                age: 32,
+                gender: 'male',
+                interests: ['music', 'skiing'],
+                bio: function() //Hành động
+                {
+                    alert(this.name[0] + ' ' + this.name[1] + ' is ' + this.age + ' years old. He likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+                },
+                greeting: function() 
+                {
+                    alert('Hi! I\'m ' + this.name[0] + '.');
+                }
+                
+ };
+            person.bio(); //truy xuất các thành phần của đối tượng;
+            person.interests[1]; //truy xuất giá trị music của thuộc tính interesting
+
+
+        </script>
+    </body>
+</html>
