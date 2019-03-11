@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hoạt động của đèn Pin</title>
+    </head>
+    <body>
+        <script>
+        
+        var congtac = function(status, lamp)
+        {
+            this.status = status;
+            this.dieukhien = function(status)
+            {
+                this.status = status;
+                console.log("Trạng thái của công tắc: " + this.status);
+                lamp.status=status;
+                lamp.hoatdong();
+            }
+         }
+    
+        var lamp = function(status)
+        {
+            this.status = status;
+            this.hoatdong = function(){
+                console.log("Trạng thái của đèn là: " + this.status);
+            }
+        }
+        var den = new lamp("off");  
+        var ctac = new congtac("on",den);
+          
+        </script>
+        <input type="button" value="ON" onclick="ctac.dieukhien(this.value)">
+        <input type="button" value="OFF" onclick="ctac.dieukhien(this.value)">
+
+        
+    </body>
+</html>

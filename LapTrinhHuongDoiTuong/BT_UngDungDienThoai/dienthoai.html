@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-9">
+        <title>Ứng dụng điện thoại</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <td>
+                        <div id="nokia">
+                                <p>Điện thoại Nokia</p><br>
+                                Trạng thái Pin: <span id="pinNokia">100</span>%<br>
+                                <textarea id="txtNokia" rows="4" cols="4" style="width: 150px; height: 80px" placeholder="Vui lòng nhập tin nhắn tại đây"></textarea><br>
+                                <input type="button" value="Gửi Tin Nhắn" onclick = "MethodSentSMS('txtNokia')"><br>
+                                <input type="button" value="Tin đã nhận" onclick = "nokia.inbox()">.
+                                <input type="button" value="Tin đã gửi" onclick = "nokia.outbox()"><br>
+                                <input type="radio" name="stNokia" value="on" checked onclick="nokia.changeStatus(this.value)">Bật
+                                <input type="radio" name="stNokia" value="off" onclick="nokia.changeStatus(this.value)">Tắt <br><br>
+                    
+                            </div>
+                </td>
+                <td>
+                        <div id="iphone">
+                                <p>Điện thoại Iphone</p><br>
+                                Trạng thái Pin: <span id="pinIphone">100</span>%<br>
+                                <textarea id="txtIphone" rows="4" cols="4" style="width: 150px; height: 80px" placeholder="Vui lòng nhập tin nhắn tại đây"></textarea><br>
+                                <input type="button" value="Gửi Tin Nhắn" onclick = "MethodSentSMS('txtIphone')"><br>
+                                <input type="button" value="Tin đã nhận" onclick = "iphone.inbox()">.
+                                <input type="button" value="Tin đã gửi" onclick = "iphone.outbox()"><br>
+                                <input type="radio" name="stIphone" value="on" checked onclick="iphone.changeStatus(this.value)">Bật
+                                <input type="radio" name="stIphone" value="off" onclick="iphone.changeStatus(this.value)">Tắt <br><br>
+                    
+                            </div>
+                </td>
+            </tr>
+
+        </table>
+
+        <script>
+        var nokia = new mobile("nokia");
+        var iphone = new mobile("iphone");
+        document.addEventListener('click',function(event){
+            document.getElementById("pinNokia").innerHTML=nokia.pin;
+            document.getElementById("pinIphone").innerHTML=iphone.pin;
+        });
+        function MethodSentSMS(txt){
+            var mess = document.getElementById(txt).value;
+            //console.log("content: " + mess);
+            if(txt =="txtNokia"){
+                //console.log("show txt: " + txt);
+                nokia.writeSMS(mess);
+                nokia.sendSMS(iphone);
+            }
+            if(txt =="txtIphone"){3
+                //console.log("show txt1: " + txt);
+                iphone.writeSMS(mess);
+                iphone.sendSMS(nokia);
+            }
+            document.getElementById(txt).value="";
+        }
+        function mobile(name){
+            this.name = name;
+            //this.sour = sour;
+            this.pin = 100;
+            this.Sentess = "";
+            this.send = [];
+            this.receiver = [];
+            this.status = "on";
+        this.changeStatus = function(status){
+            this.status = status;
+            //console.log("status" + status);
+        }
+        this.writeSMS = function(mess){
+            if(this.status=="on")
+            {
+                this.TextSms = mess;
+                //console.log("writeSMS: " + this.TextSms);
+            }
+        }
+        this.sendSMS = function(dest){
+            if(this.status =="on")
+            {
+               // console.log("status la: " + this.status);
+              //  console.log("vô hàm sendSMS if");
+                this.pin--;
+                //console.log("Pin sendSMS: " + this.pin);
+                //this.TextSms = mess;
+                this.send.push(this.TextSms);
+                console.log("mảng tin nhắn gửi: " + this.send);
+                dest.receiSMS(this.name, this.TextSms);
+                console.log("name: "+this.name);
+                //console.log("mess "+ this.TextSms);
+                //console.log("abc" +dest.receiSMS(this.name));
+            }else{alert("Điện thoại không hoạt động...")};
+        }
+        this.receiSMS = function(sour,mess){
+            console.log("vô hàm receiSMS");
+            if(this.status =="on")
+            {   
+                this.pin --;
+                //console.log("Pin receiSMS: " + this.pin);
+                this.receiver.push(mess);
+                console.log("nhận sms: " + this.receiver);
+                this.sour = sour;
+            }
+        }
+        this.checkPin = function(){
+            if(this.status =="on" )
+            {
+                return this.pin;
+                //console.log("Pin checkPin: " + this.pin);
+            }
+        }
+        this.charge = function(){
+            if(this.pin <100)
+            {
+                this.pin++;
+                //console.log("Pin charge: " + this.pin);
+            }
+        }
+        this.inbox = function()
+        {
+            console.log("hàm inbox");
+            if(this.status == "on")
+            {
+                
+                this.pin --;
+                //return this.pin;
+                var receilog="";
+                console.log("vô hàm nhận tin nhắn");
+                console.log("aaaaaa: " + this.receiver);
+                console.log("Pin inbox: " + this.pin);
+                for(var i=0; i<this.receiver.length; i++){
+                    receilog+= "[" + i + "] "+this.receiver[i] + "\n";
+                 console.log("recei1:  " + receilog);
+                }
+            alert(receilog);
+            console.log("recei2:  " + receilog);
+            }else{alert("Điện thoại không hoạt động...");
+            console.log(status);}
+            
+        }
+        this.outbox = function()
+        {
+            //console.log("hàm outbox");
+            if(this.status == "on")
+            {
+                //console.log("outbox :" + this.send);
+               
+                this.pin --;
+                //console.log("Pin outbox: " + this.pin);
+               // console.log("bbbb: " +this.send.length);
+                var sendlog ="";
+                for(var i=0; i<this.send.length; i++){
+                  //  console.log("nn: "+this.send.length);
+                    sendlog += "[" + i + "] "+this.send[i] + "\n";
+                 //   console.log("i: " +sendlog);
+                }
+                alert(sendlog);
+                //console.log("end: " +sendlog);
+        }
+        else{alert("Điện thoại không hoạt động...")}
+        }
+    }        
+        
+        </script>
+
+    </body>
+</html>
