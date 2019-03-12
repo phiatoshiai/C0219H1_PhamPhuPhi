@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>
+        QUanr li nha hang
+        </title>
+    </head>
+    <body>
+        <div>Tên</div><input type="text" id="ten" placeholder="Nhập tên nv..." style="margin:10px;">    
+        <div>Vị trí</div><input type="text" id="vitri" placeholder="Nhập vị trí nhân viên..." style="margin:10px;">
+        <div>Giờ làm</div><input type="text" id="worktime" placeholder="Nhập giờ..." style="margin:10px;">
+        <div id="ketqua"></div>
+        <input type="button" class="btn btn-danger" value ="Tính tiền" onclick="manager1.tratien(staff1);">
+        <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">HTML</a></li>
+                  <li><a href="#">CSS</a></li>
+                  <li><a href="#">JavaScript</a></li>
+                </ul>
+        </div>
+        <script>
+        var manager = function()
+        {
+            this.tratien = function(nv)
+            {
+                nv.ten=document.getElementById("ten").value;
+                nv.vitri=document.getElementById("vitri").value;
+                nv.worktime=document.getElementById("worktime").value;
+                if(nv.vitri == "bep")
+                {
+                    alert("bep");
+                    document.getElementById("ketqua").innerHTML = "Tiền lương của nhân viên " + 
+                    nv.ten + " có vị trí " + nv.vitri +" là " + (nv.worktime*100000);
+                } else if (nv.vitri == "ban") {
+                    alert("bep");
+                    console.log("Tiền lương của nhân viên " + nv.ten + " có vị trí " + nv.vitri +" là " + (nv.worktime*30000));
+                }    
+            }
+        }
+        var staff = function(ten,vitri,worktime)
+        {
+            this.ten = ten;
+            this.vitri = vitri;
+            this.worktime = worktime;
+        }
+
+        var staff1 = new staff("","","");
+        console.log(document.getElementById("ten").value);
+
+        var manager1 = new manager();
+        </script>
+        
+    </body>
+</html>
