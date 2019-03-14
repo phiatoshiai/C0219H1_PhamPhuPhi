@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bouncing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+    <div style="margin: auto; width: 500px">
+        <canvas id="myCanvas" width="500px" height="500px" style="border:1px solid red; background-color: black"></canvas></div>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var ballPhi = new Ball(100, 100, 10, 4, 3);
+        var paddlePhi = new Paddle(100, 480, 100, 20, 30);
+        //function ball
+        function Ball(x, y, radius, dx, dy) {
+            this.x = x;
+            this.y = y;
+            this.radius = radius;
+            this.dx = dx;
+            this.dy = dy;
+            this.drawBall = function () {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                ctx.fillStyle = "white";
+                ctx.fill();
+                ctx.stroke();
+            }
+            this.update = function () {
+                if (this.y - this.radius < 0) {
+                    this.dy = -this.dy;
+                }
+                if (this.y + this.radius > paddlePhi.y && (this.x + this.radius > paddlePhi.x && this.x - this.radius <
+                        paddlePhi.x + paddlePhi.width)) {
+                    this.dy = -this.dy;
+                }
+
+                if (this.y + this.radius > 500) {
+                   
+                }
+
+                if (this.x + this.radius > 500 || this.x - this.radius < 0) {
+                    this.dx = -this.dx;
+                }
+
+                this.x += this.dx;
+                this.y += this.dy;
+                this.drawBall();
+            }
+        }
+
+        function Paddle(x, y, width, height, dx) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.dx = dx;
+            this.draw = function () {
+                ctx.fillStyle = "white";
+                ctx.fillRect(this.x, this.y, this.width, this.height);
+            }
+            /*  this.control = function(){
+                  var key = event.keyCode;
+                  if(this.key=="39"){
+                      this.x += this.dx;
+                  }
+                  if(this.key=="37"){
+                      this.x -= this.dx;
+                  }
+              } */
+            this.update = function () {
+                
+                //this.control();
+                this.draw();
+            }
+
+            this.move = function(event) {
+                console.log("adsfsadf");
+                const key = event.keyCode;
+                if (key == '39') {
+                    this.x += this.dx;
+                }
+                if ( key == '37') {
+                    this.x -= this.dx;
+                }
+            }
+            this.drag = function(event) {
+                console.log("sdafdsaf")
+                var pos1 = 0;
+            
+                event = event || window.event;
+                event.preventDefault();
+                pos1 = event.clientX;
+                var bindThis = elementDrag.bind(this);
+                document.addEventListener('mouseup',closeDragElement);
+                document.addEventListener('mousemove',bindThis);
+                
+                function closeDragElement(event) {
+                    document.removeEventListener('mouseup',closeDragElement);
+                    document.removeEventListener('mousemove',bindThis);
+                }
+                function elementDrag(event) {
+                    console.log("mouse move")
+                    event = event || window.event;
+                    event.preventDefault();
+                    console.log("do dich : " + (pos1 - event.clientX))
+                    
+                    this.x+= (event.clientX - pos1)/10;
+                    console.log(this.x)
+                }
+            }
+        }
+
+        window.addEventListener('keydown',paddlePhi.move.bind(paddlePhi));
+        window.addEventListener('mousedown',paddlePhi.drag.bind(paddlePhi));
+
+        function animate() {
+            window.requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, 500, 500);
+            ballPhi.update();
+            paddlePhi.update();
+        }
+        animate();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>In hình</title>
+</head>
+
+<body>
+    Hình tam giác vuông <br>
+    <div id="tg1"></div>
+    <div id="tg2"></div>
+    <div id="tg3"></div>
+    <div id="tg4"></div><br>
+    Hình chữ nhật<br>
+    <div id="hinhchunhat"></div>
+    <script>
+        //Tam giác vuông
+        var tamgiac1 = "";
+        var tamgiac2 = "";
+        for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < i + 1; j++) {
+                t1 += "*";
+            }
+            t1 += "<br>";
+        }
+        for (var i = 4; i > -1; i--) {
+            for (var j = 0; j < i + 1; j++) {
+                t2 += "*";
+            }
+            t2 += "<br>";
+        }
+        document.getElementById("tg1").innerHTML = tamgiac1;
+        document.getElementById("tg2").innerHTML = tamgiac2;
+        document.getElementById("tg3").innerHTML = tamgiac1;
+        document.getElementById("tg4").innerHTML = tamgiac2;
+
+        //Hình chữ nhật
+        var hcn = "";
+        for (var i = 0; i < 7; i++) {
+            if (i == 0 || i == 6) {
+                for (var j = 0; j < 26; j++) {
+                    hcn += "*";
+                }
+            } else {
+                hcn += "*";
+                for (var j = 0; j < 38; j++) {
+                    hcn += "&nbsp;";
+                }
+                hcn += "*";
+            }
+            hcn += "<br>";
+        }
+        document.getElementById("hinhchunhat").innerHTML = hcn;
+    </script>
+</body>
+
+</html>

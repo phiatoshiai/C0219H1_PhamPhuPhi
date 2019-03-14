@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MoveObject</title>
+
+</head>
+
+<body>
+  <input id="btn" type="button" value="Bắt đầu" onclick="uniKeyCode()" /><br>
+  <div id="image1" style="position:absolute; left:0px; top: 50px"><img src="pikachu.png" height="300" weight="300" />
+  </div>
+  <script>
+    var image = document.getElementById("image1");
+    image.x = 0;
+    image.y = 0;
+    var button = document.getElementById("btn");
+
+    function uniKeyCode() {
+      button.style.display = 'none';
+      window.addEventListener('keydown', move);
+    }
+
+    function move(event) {
+
+      const key = event.keyCode;
+      /* switch(event.keyCode){
+         case 37:
+         console.log("left");
+         break;
+         case 39:
+         console.log("right");
+         break;
+       } */
+      const speed = 20;
+      //Right
+      if (key == '39' && (image.x + 300) < window.innerWidth) {
+        image.x += speed;
+        image.style.left = image.x + "px";
+      } else
+        //Left
+        if (key == '37' && image.x != 0) {
+          image.x -= speed;
+          image.style.left = image.x + "px";
+        } else
+          //Top
+          if (key == '38' && (image.y != 0)) {
+            image.y -= speed;
+            image.style.top = image.y + "px";
+          } else
+            //Down
+            if ((key == '40' && (image.y + 300) < window.innerHeight)) {
+              image.y += speed;
+              image.style.top = image.y + "px";
+            }
+    }
+  </script>
+</body>
+
+</html>
