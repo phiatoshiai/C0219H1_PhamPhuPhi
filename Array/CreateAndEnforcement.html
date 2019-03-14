@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create And Enforcement Array</title>
+</head>
+
+<body style="background-color:powderblue;">
+    <br>
+    <br>
+    <div style="width:420px; margin:auto">
+        <h2 style="color:red">Sample Screen</h2>
+        <input type="text" id="txtValue" placeholder="Nhập tại đây..."></input>
+        <input type="button" value="Add" onclick="addElement()"></input>
+        <input type="button" value="Display" onclick="showElement()"></input>
+        <input type="button" value="Clear" onclick="clearElement()"></input>
+        <input type="button" value="ClearAll" onclick="clearElementAll()"></input>
+        <br><br>
+        <div id="result"></div>
+    </div>
+    <script>
+        var x = 0;
+        var element = Array();
+
+        function addElement() {
+            element[x] = document.getElementById("txtValue").value;
+            x++;
+            document.getElementById("txtValue").value = "";
+        }
+
+        function showElement() {
+            if (x == 0) {
+                document.getElementById("result").innerHTML = null;
+            }
+            var e = "";
+            var q = [];
+            for (var i = 0; i < element.length; i++) {
+                e += "Element " + i + " = " + element[i] + "<br/>";
+                document.getElementById("result").innerHTML = e;
+            }
+        }
+
+        function clearElement(line) {
+            var line = parseInt(prompt("Nhập giá vị trí dòng cần xóa: "));
+            element.splice(line, 1);
+            var filtered = element.filter(function (el) {
+                return el != null;
+            });
+            element = filtered;
+            showElement();
+            x--;
+        }
+
+        function clearElementAll() {
+            x = 0;
+            element = [];
+            showElement();
+        }
+    </script>
+</body>
+
+</html>
