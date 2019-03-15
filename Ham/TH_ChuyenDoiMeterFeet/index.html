@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Convert meter & feet</title>
+</head>
+
+<body>
+    <br><br>
+    <div style="width:600px;text-align:center;margin: auto;">
+        <input type="text" onchange="changetoFeet(this.value)" placeholder="Write Meter..." />
+        <div>Feet: <span id="result1"></span></div>
+        <br>
+        <input type="text" onchange="changetoMeter(this.value)" placeholder="Write Feet..." />
+        <div>Feet: <span id="result2"></span></div>
+    </div>
+
+    </div>
+    <script>
+        function changetoFeet(meterValue) {
+            var feet = 3.279 * meterValue;
+            var result = document.getElementById("result1");
+            isNaN(feet) ? result.innerHTML = "" : result.innerHTML = feet;
+        }
+
+        function changetoMeter(feetValue) {
+            var meter = 0.305 * feetValue;
+            var result = document.getElementById("result2");
+            isNaN(meter) ? result.innerHTML = "" : result.innerHTML = meter;
+        }
+    </script>
+</body>
+
+</html>

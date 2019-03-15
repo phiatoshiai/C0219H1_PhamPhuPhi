@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert dashes (-) between even numbers</title>
+</head>
+
+<body style="background-color:powderblue;">
+    <br>
+    <br>
+    <script>
+        var x = parseInt(prompt("Nhập một dãy số: "));
+        var num = x.toString();
+        var result = [];
+        for (var i = 0; i < num.length; i++) {
+            if (num[i] % 2 == 0 && num[i + 1] % 2 == 0) {
+                result.push(num[i] + '-');
+            } else {
+                (result.push(num[i]));
+            }
+        }
+        num = result.join('');
+        console.log(num);
+    </script>
+
+</body>
+
+</html>

@@ -33,11 +33,15 @@
             if (x == 0) {
                 document.getElementById("result").innerHTML = null;
             }
-            var e = "";
+            var data = "";
             var q = [];
             for (var i = 0; i < element.length; i++) {
-                e += "Element " + i + " = " + element[i] + "<br/>";
-                document.getElementById("result").innerHTML = e;
+                data += '<tr>';
+                data += '<td>' + this.products[i] + '</td>';
+                data += '<td><button onclick="app.edit(' + i + ')">Edit</button></td>';
+                data += '<td><button onclick="app.delete(' + i + ')">Delete</button></td>';
+                data += '</tr>';
+                document.getElementById("result").innerHTML = data;
             }
         }
 

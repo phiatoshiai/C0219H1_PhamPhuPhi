@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<htm>
+    <head>
+        <meta charset="utf-8">
+        <title>Products Manager</title>
+    </head>
+    <body>
+        <input type = "text" id="txtNew" placeholder="write new products"></input>
+        <input type = "button" value ="ADD" onclick="Product.addNew()"></input>
+        <div id="result"></div>
+        <script>
+        var count = 0;
+        var arrayProduct = new Array();
+        function Product(){
+            this.addNew = function(){
+            var addpro = document.getElementById("txtNew").value;
+            arrayProduct[count]=addpro;
+            count++;
+            document.getElementById("txtNew").value = "";
+            this.showProduct();
+            }
+
+            this.showProduct = function(){
+                var data = "";
+                if (arrayProduct.length > 0) {
+                for(var i=0; i<arrayProduct.length;i++){
+                data += '<tr>';
+                data += '<td>' + arrayProduct[i] + '</td>'+'  ';
+                data += '<td><button onclick="Product.edit(' + i + ')">Edit</button></td>';
+                data += '<td><button onclick="Product.delete(' + i + ')">Delete</button></td>';
+                data += '</tr>';
+                data += '</br>';
+                document.getElementById("result").innerHTML = data;
+                }
+            }
+        }
+            this.edit = function(){
+            
+            }
+
+            this.delete = function(){
+
+            }
+        }
+
+        function editProduct(){
+
+        }
+
+        function dellProduct(){
+
+        }
+        function count(){
+
+        }
+        var Product = new Product();
+            
+            
+            
+            
+            
+        </script>
+    </body>
+</htm>
