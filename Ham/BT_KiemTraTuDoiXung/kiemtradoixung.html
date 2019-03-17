@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KIỂM TRA TỪ ĐỐI XỨNG</title>
+</head>
+
+<body>
+    <br><br>
+    <script>
+        var s = prompt("Nhập từ cần kiểm tra: ");
+        var check = true;
+        for (var i = 0; i < s.length / 2; i++) {
+            if (s[i] != s[s.length-i-1]) {
+                check = false;
+            }
+        }
+        check ? alert("Từ đối xứng") : alert("Không phải từ đối xứng");
+    </script>
+</body>
+</html>
